@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const Nav = ({ title }) => {
 	return (
@@ -35,6 +36,10 @@ const Nav = ({ title }) => {
 
 Nav.defaultProps = {
 	title: "Github Finder",
+};
+
+Nav.prototype = {
+	title: PropTypes.string.isRequired,
 };
 
 export default Nav;
