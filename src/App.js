@@ -10,16 +10,18 @@ import About from "./components/pages/About";
 function App() {
 	return (
 		<Router>
-			<Nav />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/notfound" element={<NotFound />} />
-				<Route path="/*" element={<NotFound />} />
-			</Routes>
+			<div className="flex flex-col justify-between h-screen">
+				<Nav />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/notfound" element={<NotFound />} />
+					<Route path="/*" element={<NotFound />} />
+				</Routes>
 
-			<main>content</main>
-			<Footer />
+				<main>content</main>
+				<Footer />
+			</div>
 		</Router>
 	);
 }
