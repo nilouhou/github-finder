@@ -1,10 +1,16 @@
 import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	return (
-		<div>
-			<h1 className="text-3xl font-bold underline">Hello world!</h1>
-		</div>
+		<Router>
+			<Nav />
+			<main>content</main>
+			<Footer />
+		</Router>
 	);
 }
 
