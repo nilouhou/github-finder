@@ -4,9 +4,9 @@ import { FaGithub } from "react-icons/fa";
 
 const Nav = ({ title }) => {
 	return (
-		<nav className="navbar mb-12 shadow-lg text-neutral-content">
-			<div className="container mx-auto">
-				<div className="flex-none px-2 mx-auto">
+		<nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
+			<div className="container justify-between">
+				<div className="px-2">
 					<Link to="/">
 						<h1 className="text-lg font-bold align-middle">
 							<FaGithub className="text-3xl inline pr-2" />
@@ -14,7 +14,7 @@ const Nav = ({ title }) => {
 						</h1>
 					</Link>
 				</div>
-				<div className="felx-1 PX-2 MX-2">
+				<div className="felx-1 px-2 mx-2">
 					<ul className="flex jutify-end">
 						<li>
 							<Link to="/" className="btn btn-ghost btn-sm rounded-btn">
@@ -33,7 +33,7 @@ const Nav = ({ title }) => {
 	);
 };
 
-Nav.defaultPrps = {
+Nav.defaultProps = {
 	title: "Github Finder",
 };
 
