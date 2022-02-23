@@ -4,6 +4,7 @@ import UserItem from "../UserItem/UserItem";
 
 const Users = () => {
 	const { users, loading, fetchUsers } = useContext(GithubContext);
+
 	useEffect(() => {
 		fetchUsers();
 	}, []);
