@@ -19,7 +19,6 @@ function App() {
 					<Route path="/*" element={<NotFound />} />
 				</Routes>
 
-				<main>content</main>
 				<Footer />
 			</div>
 		</Router>

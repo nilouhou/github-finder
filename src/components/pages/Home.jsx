@@ -1,7 +1,12 @@
 import React from "react";
+import Users from "../Users/Users";
 
 const Home = () => {
-	return <div>Home</div>;
+	return (
+		<div className="container text-center">
+			<Users />
+		</div>
+	);
 };
 
 export default Home;
