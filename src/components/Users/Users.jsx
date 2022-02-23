@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import UserItem from "../UserItem/UserItem";
 
 const API_URL = process.env.REACT_APP_GITHUB_URL;
 
@@ -27,7 +28,7 @@ const Users = () => {
 			{loading ? (
 				<p>LOADING</p>
 			) : (
-				users.map((user) => <p key={user.id}>{user.login}</p>)
+				users.map((user) => <UserItem key={user.id} user={user} />)
 			)}
 		</div>
 	);
