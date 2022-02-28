@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
-import Home from "./components/pages/Home";
-import NotFound from "./components/pages/NotFound";
-import About from "./components/pages/About";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 import { GithubProvider } from "./context/GithubContext/GithubContext";
 
 function App() {

@@ -13,18 +13,18 @@ export const GithubProvider = ({ children }) => {
 
 	const [state, dispatch] = useReducer(githubReducer, initalState);
 
-	const fetchUsers = async () => {
+	const serachUsers = async (query) => {
 		setLoading();
-		const response = await fetch(`${API_URL}/users`, {
+		const response = await fetch(`${API_URL}/search/users?q=${query}`, {
 			headers: {
 				Authorization: `token ${Github_Token}`,
 			},
 		});
 
-		const data = await response.json();
+		const { items } = await response.json();
 		dispatch({
 			type: "GET_USERS",
-			payload: data,
+			payload: items,
 		});
 	};
 
@@ -35,7 +35,7 @@ export const GithubProvider = ({ children }) => {
 	};
 	return (
 		<GithubContext.Provider
-			value={{ users: state.users, loading: state.loading, fetchUsers }}
+			value={{ users: state.users, loading: state.loading, serachUsers }}
 		>
 			{children}
 		</GithubContext.Provider>
