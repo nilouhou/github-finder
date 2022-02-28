@@ -3,13 +3,17 @@ import GithubContext from "../../context/GithubContext/GithubContext";
 
 const Search = () => {
 	const [query, setQuery] = useState("");
-	const { users, serachUsers } = useContext(GithubContext);
+	const { users, serachUsers, setClear } = useContext(GithubContext);
 
 	const handleChange = (e) => setQuery(e.target.value);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		query.length ? serachUsers(query) : alert("Please type users");
 		setQuery("");
+	};
+
+	const handleClear = () => {
+		setClear();
 	};
 
 	return (
@@ -37,7 +41,9 @@ const Search = () => {
 			</div>
 			{users.length > 0 && (
 				<div>
-					<button className="btn btn-ghost btn-lg">Clear</button>
+					<button onClick={handleClear} className="btn btn-ghost btn-lg">
+						Clear
+					</button>
 				</div>
 			)}
 		</div>
