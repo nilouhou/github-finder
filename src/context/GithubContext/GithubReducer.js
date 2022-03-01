@@ -13,6 +13,7 @@ const githubReducer = (state, action) => {
 			};
 		case "CLEAR":
 			return {
+				...state,
 				users: [],
 			};
 
