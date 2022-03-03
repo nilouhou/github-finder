@@ -7,11 +7,13 @@ import Spinner from "../assets/spinner.gif";
 import Repos from "../components/Repos/Repos";
 
 const User = () => {
-	const { user, fetchUser, loading } = useContext(GithubContext);
+	const { user, fetchUser, loading, repos, fetchRepos } =
+		useContext(GithubContext);
 	const params = useParams();
 
 	useEffect(() => {
 		fetchUser(params.login);
+		fetchRepos(params.login);
 	}, []);
 
 	const {
@@ -155,7 +157,7 @@ const User = () => {
 						</div>
 					</div>
 				</div>
-				<Repos />
+				<Repos repos={repos} />
 			</div>
 		</>
 	);

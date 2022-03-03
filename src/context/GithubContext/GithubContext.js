@@ -10,7 +10,7 @@ export const GithubProvider = ({ children }) => {
 	const initalState = {
 		users: [],
 		user: {},
-		repos:[],
+		repos: [],
 		loading: false,
 	};
 
@@ -70,11 +70,18 @@ export const GithubProvider = ({ children }) => {
 	const fetchRepos = async (login) => {
 		try {
 			setLoading();
-			const response = await fetch(`${API_URL}/users/${login}/repos`, {
-				headers: {
-					Authorization: `token ${Github_Token}`,
-				},
+			const params = new URLSearchParams({
+				sort: "created",
+				per_page: 10,
 			});
+			const response = await fetch(
+				`${API_URL}/users/${login}/repos?${params}`,
+				{
+					headers: {
+						Authorization: `token ${Github_Token}`,
+					},
+				}
+			);
 
 			const data = await response.json();
 			dispatch({
