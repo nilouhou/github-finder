@@ -4,6 +4,7 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import GithubContext from "../context/GithubContext/GithubContext";
 import { Link } from "react-router-dom";
 import Spinner from "../assets/spinner.gif";
+import Repos from "../components/Repos/Repos";
 
 const User = () => {
 	const { user, fetchUser, loading } = useContext(GithubContext);
@@ -154,6 +155,7 @@ const User = () => {
 						</div>
 					</div>
 				</div>
+				<Repos />
 			</div>
 		</>
 	);

@@ -10,6 +10,7 @@ export const GithubProvider = ({ children }) => {
 	const initalState = {
 		users: [],
 		user: {},
+		repos:[],
 		loading: false,
 	};
 
@@ -65,6 +66,26 @@ export const GithubProvider = ({ children }) => {
 		}
 	};
 
+	//Get single user Repos
+	const fetchRepos = async (login) => {
+		try {
+			setLoading();
+			const response = await fetch(`${API_URL}/users/${login}/repos`, {
+				headers: {
+					Authorization: `token ${Github_Token}`,
+				},
+			});
+
+			const data = await response.json();
+			dispatch({
+				type: "GET_REPOS",
+				payload: data,
+			});
+		} catch (error) {
+			<Navigate to="/notfound" />;
+		}
+	};
+
 	return (
 		<GithubContext.Provider
 			value={{
@@ -74,6 +95,8 @@ export const GithubProvider = ({ children }) => {
 				setClear,
 				fetchUser,
 				user: state.user,
+				fetchRepos,
+				repos: state.repos,
 			}}
 		>
 			{children}
