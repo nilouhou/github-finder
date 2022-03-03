@@ -29,7 +29,9 @@ const Search = () => {
 	};
 
 	const handleClear = () => {
-		setClear();
+		dispatch({
+			type: "CLEAR",
+		});
 	};
 
 	return (

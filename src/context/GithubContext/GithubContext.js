@@ -13,23 +13,11 @@ export const GithubProvider = ({ children }) => {
 
 	const [state, dispatch] = useReducer(githubReducer, initalState);
 
-	const setLoading = () => {
-		dispatch({
-			type: "SET_LOADING",
-		});
-	};
-	const setClear = () => {
-		dispatch({
-			type: "CLEAR",
-		});
-	};
-
 	return (
 		<GithubContext.Provider
 			value={{
 				...state,
 				dispatch,
-				setClear,
 			}}
 		>
 			{children}
