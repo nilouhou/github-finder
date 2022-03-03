@@ -2,6 +2,9 @@
 
 This is an app to find Github users and it shows users top 10 latest repos, most of data about github users.
 
+## Demo 
+[For demo click here](https://github-finder-3pfcbgmlc-nilouhou.vercel.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
