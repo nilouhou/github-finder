@@ -21,8 +21,8 @@ const Search = () => {
 	return (
 		<div>
 			<p>{alert}</p>
-			<div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8">
-				<div>
+			<div className="grid grid-cols-6 gap-4 mb-6">
+				<div className="col-start-2 col-span-4 ...">
 					<form onSubmit={handleSubmit}>
 						<div className="form-control">
 							<div className="relative">

@@ -4,7 +4,7 @@ import Search from "../components/Search/Search";
 
 const Home = () => {
 	return (
-		<div className="container text-center p-3">
+		<div className="container text-center p-3 mx-auto">
 			<Search />
 			<Users />
 		</div>
