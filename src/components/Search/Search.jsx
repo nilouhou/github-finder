@@ -1,16 +1,29 @@
 import React, { useState, useContext } from "react";
 import GithubContext from "../../context/GithubContext/GithubContext";
 import AlertContext from "../../context/Alert/AlertContext";
+import { serachUsers } from "../../context/GithubContext/GithubActions";
 
 const Search = () => {
 	const [query, setQuery] = useState("");
-	const { users, serachUsers, setClear } = useContext(GithubContext);
+	const { users, setClear, dispatch } = useContext(GithubContext);
 	const { alert, setAlert } = useContext(AlertContext);
 
 	const handleChange = (e) => setQuery(e.target.value);
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		query.length ? serachUsers(query) : setAlert("Please type users");
+		if (query !== "") {
+			dispatch({ type: "SET_LOADING" });
+			// Becuase searchUseres returning data, we need to make handle submit asyn function
+			const usersData = await serachUsers(query);
+
+			dispatch({
+				type: "GET_USERS",
+				payload: usersData,
+			});
+		} else {
+			setAlert("Please type users");
+		}
+
 		setQuery("");
 	};
 
