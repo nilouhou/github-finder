@@ -9,6 +9,7 @@ const Search = () => {
 	const { alert, setAlert } = useContext(AlertContext);
 
 	const handleChange = (e) => setQuery(e.target.value);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (query !== "") {

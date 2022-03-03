@@ -5,16 +5,29 @@ import GithubContext from "../context/GithubContext/GithubContext";
 import { Link } from "react-router-dom";
 import Spinner from "../assets/spinner.gif";
 import Repos from "../components/Repos/Repos";
+import { fetchRepos, fetchUser } from "../context/GithubContext/GithubActions";
 
 const User = () => {
-	const { user, fetchUser, loading, repos, fetchRepos } =
-		useContext(GithubContext);
+	const { user, loading, repos, dispatch } = useContext(GithubContext);
 	const params = useParams();
 
 	useEffect(() => {
-		fetchUser(params.login);
-		fetchRepos(params.login);
-	}, []);
+		dispatch({ type: "SET_LOADING" });
+		const getUserData = async () => {
+			const user = await fetchUser(params.login);
+			dispatch({
+				type: "GET_USER",
+				payload: user,
+			});
+			const repos = await fetchRepos(params.login);
+			dispatch({
+				type: "GET_REPOS",
+				payload: repos,
+			});
+		};
+
+		getUserData();
+	}, [dispatch, params.login]);
 
 	const {
 		name,
@@ -24,7 +37,6 @@ const User = () => {
 		bio,
 		blog,
 		twitter_username,
-		login,
 		html_url,
 		followers,
 		following,
