@@ -5,7 +5,7 @@ import GithubContext from "../context/GithubContext/GithubContext";
 import { Link } from "react-router-dom";
 import Spinner from "../assets/spinner.gif";
 import Repos from "../components/Repos/Repos";
-import { fetchRepos, fetchUser } from "../context/GithubContext/GithubActions";
+import { getUserAndRepos } from "../context/GithubContext/GithubActions";
 
 const User = () => {
 	const { user, loading, repos, dispatch } = useContext(GithubContext);
@@ -14,15 +14,10 @@ const User = () => {
 	useEffect(() => {
 		dispatch({ type: "SET_LOADING" });
 		const getUserData = async () => {
-			const user = await fetchUser(params.login);
+			const userData = await getUserAndRepos(params.login);
 			dispatch({
-				type: "GET_USER",
-				payload: user,
-			});
-			const repos = await fetchRepos(params.login);
-			dispatch({
-				type: "GET_REPOS",
-				payload: repos,
+				type: "GET_USER_REPOS",
+				payload: userData,
 			});
 		};
 
